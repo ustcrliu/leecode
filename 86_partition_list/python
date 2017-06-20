@@ -1,0 +1,31 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def partition(self, head, x):
+        """
+        :type head: ListNode
+        :type x: int
+        :rtype: ListNode
+        """
+        if head is None or head.next is None or x is None:  
+            return head
+          
+        lp = left= ListNode(0)  
+        rp = right = ListNode(0)  
+        p = head  
+        
+        while p:  
+            if p.val < x:  
+                lp.next = p  
+                lp = lp.next  
+            else:  
+                rp.next = p  
+                rp = rp.next  
+            p = p.next  
+        lp.next = right.next  
+        rp.next = None  
+        return left.next  
