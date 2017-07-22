@@ -1,0 +1,15 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        for (auto n1 = nums.begin(); n1 != nums.end() - 1; ++n1) {
+            for (auto n2 = n1 + 1; n2 != nums.end(); ++n2) {
+                if (*n1 + *n2 == target) {
+                    vector<int> res;
+                    res.push_back(n1 - nums.begin());
+                    res.push_back(n2 - nums.begin());
+                    return res;
+                }
+            }
+        }
+    }
+};
