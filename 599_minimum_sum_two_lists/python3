@@ -1,0 +1,19 @@
+class Solution:
+    def findRestaurant(self, list1, list2):
+        """
+        :type list1: List[str]
+        :type list2: List[str]
+        :rtype: List[str]
+        """
+        ans = []
+        length = len(list1) + len(list2)
+        ss = length
+        ansmap = {v : index for index, v in enumerate(list1)}
+        for i, v in enumerate(list2):
+            j = ansmap.get(v, length)
+            if i + j < ss:
+                ans = [v]
+                ss = i +j
+            elif i + j == ss:
+                ans.append(v)
+        return ans
