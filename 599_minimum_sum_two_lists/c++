@@ -1,0 +1,28 @@
+class Solution {
+public:
+    vector<string> findRestaurant(vector<string>& list1, vector<string>& list2) {
+        vector<string> ans;
+        map<string, int> ansmap;
+        vector<string>::iterator it;
+        int l1, l2;
+        int sum = list1.size() + list2.size();
+        for (int i = 0; i != list1.size(); ++i) {
+            it = find(list2.begin(), list2.end(), list1[i]);
+            if (it != list2.end()) {
+                l2 = distance(list2.begin(), it);
+                l1 = i;
+                ansmap[list1[i]] = l1 + l2;
+                if (l1 + l2 < sum) {
+                    sum = l1 + l2;
+                }
+                
+            }
+        }
+        for (auto &n : ansmap) {
+            if (n.second == sum) {
+                ans.push_back(n.first);
+                }
+            }
+        return ans;
+    }
+};
